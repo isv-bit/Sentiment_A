@@ -35,12 +35,18 @@ with st.expander('Analizar texto'):
         st.write('Polarity: ', round(blob.sentiment.polarity,2))
         st.write('Subjectivity: ', round(blob.sentiment.subjectivity,2))
         x=round(blob.sentiment.polarity,2)
-        if x > 0.0 and x <=1.0:
+        if x > 0.0 and x <1.0:
             st.write( 'Es un sentimiento Positivo 😊')
-        elif x >=-1 and x <= 0:
+            with open('cat2.json') as source:
+                 animation=json.load(source)
+            st.lottie(animation,width =100)
+        elif x >-1 and x < 0:
             st.write( 'Es un sentimiento Negativo 😔')
             with open('cat.json') as source:
                  animation=json.load(source)
-            st.lottie(animation,width =350)
+            st.lottie(animation,width =100)
         else:
             st.write( 'Es un sentimiento Neutral 😐')
+            with open('cat3.json') as source:
+                 animation=json.load(source)
+            st.lottie(animation,width =100)
