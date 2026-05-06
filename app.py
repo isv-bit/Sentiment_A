@@ -13,47 +13,57 @@ st.set_page_config(
     layout="centered"
 )
 
-# ------------------ ESTILOS (SIN CAMBIAR FONDO GENERAL) ------------------
+# ------------------ ESTILOS VISIBLES ------------------
 st.markdown("""
 <style>
 
-/* Título */
+/* Título principal */
 h1 {
-    color: #2E86C1;
+    color: #FF5733 !important;
     text-align: center;
 }
 
-/* Subtítulos */
+/* Subtítulo */
 h3 {
-    color: #117A65;
+    color: #2ECC71 !important;
 }
 
-/* Expander (simula card simple) */
-.streamlit-expanderHeader {
-    background-color: #D6EAF8;
-    border-radius: 8px;
-    padding: 8px;
+/* Expander (card real) */
+div[data-testid="stExpander"] {
+    border: 2px solid #FF5733;
+    border-radius: 12px;
+    background-color: #FFF4F2;
+    padding: 10px;
+}
+
+/* Header del expander */
+div[data-testid="stExpander"] > div:first-child {
+    background-color: #FF5733;
+    color: white;
     font-weight: bold;
+    border-radius: 10px;
+}
+
+/* Caja de resultados */
+.result-box {
+    background-color: #D4EFDF;
+    border-left: 8px solid #2ECC71;
+    padding: 15px;
+    border-radius: 10px;
+    color: black;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Input */
+input {
+    border: 2px solid #FF5733 !important;
+    border-radius: 8px !important;
 }
 
 /* Sidebar */
 section[data-testid="stSidebar"] {
-    background-color: #F4F6F7;
-}
-
-/* Texto destacado */
-.result-box {
-    background-color: #EBF5FB;
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 10px;
-    color: #1B4F72;
-    font-weight: 500;
-}
-
-/* Input */
-.stTextInput>div>div>input {
-    border-radius: 8px;
+    background-color: #F8F9F9;
 }
 
 /* Imagen centrada */
@@ -80,11 +90,8 @@ translator = Translator()
 with st.sidebar:
     st.subheader("📊 Polaridad y Subjetividad")
     st.write("""
-    **Polaridad:**  
-    Va de -1 (negativo) a 1 (positivo).
-
-    **Subjetividad:**  
-    Va de 0 (objetivo) a 1 (subjetivo).
+    **Polaridad:** de -1 (negativo) a 1 (positivo)  
+    **Subjetividad:** de 0 (objetivo) a 1 (subjetivo)
     """)
 
 # ------------------ EXPANDER ------------------
@@ -99,7 +106,7 @@ with st.expander('📝 Analizar texto'):
         polarity = round(blob.sentiment.polarity, 2)
         subjectivity = round(blob.sentiment.subjectivity, 2)
 
-        # RESULTADOS
+        # RESULTADOS (MUY VISIBLES)
         st.markdown(f"""
         <div class="result-box">
         🔹 <b>Polaridad:</b> {polarity} <br>
