@@ -25,7 +25,7 @@ h1 {
 
 /* Subtítulo */
 h3 {
-    color: #2ECC71 !important;
+    color: #8cedb0 !important;
 }
 
 /* Expander (card real) */
