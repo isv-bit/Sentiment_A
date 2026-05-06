@@ -79,7 +79,7 @@ img {
 # ------------------ HEADER ------------------
 st.title('Análisis de Sentimiento')
 
-image = Image.open('emoticones.jpg')
+image = Image.open('sentimental.jpg')
 st.image(image, width=250)
 
 st.subheader("Escribe la frase que deseas analizar")
