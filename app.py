@@ -63,7 +63,7 @@ input {
 
 /* Sidebar */
 section[data-testid="stSidebar"] {
-    background-color: #4287a1;
+    background-color: #145446;
 }
 
 /* Imagen centrada */
